@@ -1,0 +1,799 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>همّة · Himma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Atkinson+Hyperlegible:wght@400;700&family=Tajawal:wght@400;500;700&display=swap">
+<style>
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#E2E9E1; --ink:#15251D; --ink-2:#3E5148;
+  --line:#C5D0C6; --palm:#1C5A42; --falaj:#0A6571; --adobe:#9A5222; --adobe-soft:#EFDCC7;
+  --stone:#6B6155; --danger:#A3211B; --on-accent:#FFFFFF; --sky:#F6E7D2; --sun:#E7A55B;
+  --ridge:#B79C80; --ridge-2:#9C8266; --focus:#0A6571;
+  --skin:#C68A60; --robe:#FBFBF6; --abaya:#1E1E22;
+  --font-display:'Reem Kufi','IBM Plex Sans Arabic',Tahoma,sans-serif;
+  --font-body:'IBM Plex Sans Arabic',Tahoma,'Segoe UI',sans-serif;
+  --radius:14px; --tap:48px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1713; --surface:#16211B; --surface-2:#1E2B24; --ink:#E7EEE9; --ink-2:#B2C1B7;
+    --line:#2E3E35; --palm:#62BD95; --falaj:#55C3CE; --adobe:#E39E66; --adobe-soft:#3A2B1E;
+    --stone:#B8AC9C; --danger:#F07C73; --on-accent:#0F1713; --sky:#1B2620; --sun:#C98A45;
+    --ridge:#4B4034; --ridge-2:#3A3129; --focus:#55C3CE; --skin:#B07A55; --robe:#D9DFD7; --abaya:#08090A; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1713; --surface:#16211B; --surface-2:#1E2B24; --ink:#E7EEE9; --ink-2:#B2C1B7;
+  --line:#2E3E35; --palm:#62BD95; --falaj:#55C3CE; --adobe:#E39E66; --adobe-soft:#3A2B1E;
+  --stone:#B8AC9C; --danger:#F07C73; --on-accent:#0F1713; --sky:#1B2620; --sun:#C98A45;
+  --ridge:#4B4034; --ridge-2:#3A3129; --focus:#55C3CE; --skin:#B07A55; --robe:#D9DFD7; --abaya:#08090A; color-scheme:dark;
+}
+/* High-contrast mode (user choice, wins over both themes) */
+:root.hc{
+  --bg:#000; --surface:#000; --surface-2:#0D0D0D; --ink:#FFF; --ink-2:#FFF; --line:#FFF;
+  --palm:#FFE500; --falaj:#7FE8FF; --adobe:#FFB067; --adobe-soft:#1A1A1A; --stone:#FFF;
+  --danger:#FF8A80; --on-accent:#000; --sky:#000; --sun:#FFE500; --ridge:#333; --ridge-2:#222;
+  --focus:#FFE500; --skin:#C68A60; --robe:#FFFFFF; --abaya:#333; color-scheme:dark;
+}
+:root.readable{ --font-body:'Atkinson Hyperlegible','Tajawal',Tahoma,sans-serif; --font-display:'Atkinson Hyperlegible','Tajawal',Tahoma,sans-serif; }
+html{font-size:100%} html.fs-1{font-size:112.5%} html.fs-2{font-size:125%} html.fs-3{font-size:140%}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:1rem;line-height:1.7;margin:0}
+.readable body, .readable{letter-spacing:.01em;word-spacing:.08em}
+*{box-sizing:border-box} [hidden]{display:none!important}
+a{color:var(--falaj);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--font-display);line-height:1.3;text-wrap:balance;margin:0}
+p{margin:0;text-wrap:pretty}
+button,select,input{font:inherit;color:inherit}
+.wrap{max-width:1180px;margin-inline:auto;padding-inline:20px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;inset-inline-start:12px;top:-60px;background:var(--palm);color:var(--on-accent);padding:10px 16px;border-radius:10px;z-index:100;font-weight:700}
+.skip:focus{top:12px}
+
+/* Fort merlon border — crenellations of Al Jahili & Qasr Al Muwaiji */
+.merlons{height:12px;background:linear-gradient(90deg,var(--adobe) 55%,transparent 0) 0 0/28px 12px repeat-x;opacity:.9}
+.falaj-line{height:10px;border-block:2px solid var(--falaj);opacity:.55;margin-block:0}
+
+/* Header */
+header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--surface);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:16px;min-height:72px;flex-wrap:wrap;padding-block:8px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.brand b{font-family:var(--font-display);font-size:1.6rem;color:var(--palm);line-height:1}
+.brand small{display:block;font-size:.75rem;color:var(--ink-2);letter-spacing:.04em}
+nav.main{margin-inline-start:auto}
+nav.main ul{list-style:none;display:flex;gap:4px;margin:0;padding:0;flex-wrap:wrap}
+nav.main a{display:flex;align-items:center;min-height:var(--tap);padding-inline:14px;border-radius:10px;color:var(--ink);text-decoration:none;font-weight:600}
+nav.main a:hover{background:var(--surface-2)}
+.tools{display:flex;gap:8px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:var(--tap);padding-inline:18px;border-radius:12px;border:2px solid transparent;font-weight:700;cursor:pointer;text-decoration:none;background:var(--surface-2);color:var(--ink);transition:background .15s,transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:var(--palm);color:var(--on-accent)}
+.btn.outline{background:transparent;border-color:var(--line)}
+.btn.danger{background:var(--danger);color:var(--on-accent)}
+.btn svg{flex-shrink:0}
+.menu-toggle{display:none}
+@media (max-width:980px){
+  .menu-toggle{display:inline-flex}
+  nav.main{order:5;width:100%;margin:0}
+  nav.main ul{display:none;flex-direction:column;padding-bottom:10px}
+  nav.main.open ul{display:flex}
+  .tools{margin-inline-start:auto}
+}
+@media (max-width:520px){ .tools .label-long{display:none} .brand small{display:none} }
+
+/* Popovers (a11y + emergency) */
+.pop{position:absolute;inset-inline-end:20px;top:calc(100% + 8px);width:min(380px,calc(100vw - 32px));background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 18px 40px rgba(0,0,0,.18);display:grid;gap:14px}
+.pop h2{font-size:1.2rem}
+.opt-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.seg{display:flex;gap:6px}
+.seg button{min-width:var(--tap);min-height:var(--tap);border-radius:10px;border:2px solid var(--line);background:var(--surface);font-weight:700;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--palm);color:var(--on-accent);border-color:var(--palm)}
+.switch{position:relative;width:60px;height:34px;border-radius:999px;border:2px solid var(--line);background:var(--surface-2);cursor:pointer;flex-shrink:0}
+.switch::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:24px;height:24px;border-radius:50%;background:var(--ink-2);transition:inset-inline-start .15s}
+.switch[aria-checked="true"]{background:var(--palm);border-color:var(--palm)}
+.switch[aria-checked="true"]::after{inset-inline-start:29px;background:var(--on-accent)}
+.em-num{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-radius:12px;background:var(--surface-2);font-weight:700}
+.em-num span:last-child{font-family:var(--font-display);font-size:1.6rem;color:var(--danger);direction:ltr}
+
+/* Hero */
+.hero{padding-block:48px 40px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--adobe);font-size:.95rem;letter-spacing:.02em}
+.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);margin-block:12px 16px;color:var(--ink)}
+.hero h1 em{font-style:normal;color:var(--palm)}
+.hero .lead{font-size:1.15rem;color:var(--ink-2);max-width:56ch}
+.quick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:28px}
+.quick a{display:flex;align-items:center;gap:14px;min-height:76px;padding:14px 16px;border-radius:16px;background:var(--surface);border:2px solid var(--line);text-decoration:none;color:var(--ink);font-weight:700;font-size:1.05rem;transition:border-color .15s,transform .15s}
+.quick a:hover{border-color:var(--palm);transform:translateY(-2px)}
+.quick .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;flex-shrink:0;color:var(--on-accent)}
+.quick small{display:block;font-weight:500;color:var(--ink-2);font-size:.85rem}
+.scene{width:100%;max-width:100%;height:auto;border-radius:24px;display:block}
+.scene-cap{font-size:.85rem;color:var(--ink-2);margin-top:10px;text-align:center}
+@media (max-width:860px){ .hero-grid{grid-template-columns:1fr} .scene-box{order:-1} .quick{grid-template-columns:1fr} }
+
+/* Sections */
+section.block{padding-block:56px}
+section.alt{background:var(--surface)}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin-bottom:28px}
+.sec-head h2{font-size:clamp(1.7rem,3.2vw,2.4rem)}
+.sec-head p{color:var(--ink-2);max-width:60ch;margin-top:6px}
+.kicker{font-weight:700;color:var(--adobe);font-size:.9rem;letter-spacing:.03em}
+.note{display:flex;gap:10px;align-items:flex-start;background:var(--adobe-soft);border-radius:12px;padding:12px 14px;font-size:.92rem;color:var(--ink)}
+
+/* Section illustrations */
+.sec-head.with-art{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,460px);align-items:center;gap:32px}
+.art{margin:0}
+.art svg{width:100%;height:auto;display:block;border-radius:22px;max-width:100%}
+.art figcaption{font-size:.85rem;color:var(--ink-2);margin-top:8px}
+.ev-art{grid-column:1/-1;width:100%;height:96px;display:block;border-radius:12px}
+.simple .art,.simple .ev-art{display:none!important}
+.simple .sec-head.with-art{grid-template-columns:1fr}
+@media (max-width:860px){ .sec-head.with-art{grid-template-columns:1fr} }
+
+/* Finder */
+.finder{display:grid;grid-template-columns:300px 1fr;gap:28px;align-items:start}
+.filters{background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:20px;display:grid;gap:20px;position:sticky;top:96px}
+section.alt .filters{background:var(--bg)}
+.filters fieldset{border:0;margin:0;padding:0;display:grid;gap:10px}
+.filters legend,.flabel{font-weight:700;margin-bottom:6px;padding:0}
+select{min-height:var(--tap);border-radius:10px;border:2px solid var(--line);background:var(--surface);padding-inline:12px;width:100%}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:44px;padding-inline:14px;border-radius:999px;border:2px solid var(--line);background:var(--surface);cursor:pointer;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.chip[aria-pressed="true"]{background:var(--palm);color:var(--on-accent);border-color:var(--palm)}
+.check{display:flex;align-items:center;gap:10px;min-height:44px;cursor:pointer}
+.check input{width:24px;height:24px;accent-color:var(--palm)}
+.results{display:grid;gap:16px}
+.count{font-weight:700;color:var(--ink-2)}
+.card{background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:20px;display:grid;gap:12px}
+section.alt .card{background:var(--bg)}
+.card-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.card h3{font-size:1.25rem}
+.meta{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--ink-2);font-size:.95rem}
+.meta span{display:inline-flex;align-items:center;gap:6px}
+.dist{font-family:var(--font-display);font-size:1.3rem;color:var(--falaj);white-space:nowrap;font-variant-numeric:tabular-nums}
+.feat{display:flex;flex-wrap:wrap;gap:8px}
+.feat span{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:8px;background:var(--surface-2);font-size:.88rem;font-weight:600}
+.ex{font-size:.75rem;font-weight:700;color:var(--adobe);border:1.5px solid var(--adobe);border-radius:6px;padding:1px 7px;white-space:nowrap}
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.status{font-size:.92rem;font-weight:600;color:var(--palm)}
+.fav[aria-pressed="true"]{color:var(--danger);border-color:var(--danger)}
+.empty{padding:28px;text-align:center;border:2px dashed var(--line);border-radius:18px;color:var(--ink-2)}
+@media (max-width:860px){ .finder{grid-template-columns:1fr} .filters{position:static} }
+
+/* Events */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.events{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
+.ev{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
+.date{width:74px;border-radius:14px;overflow:hidden;text-align:center;border:2px solid var(--line);background:var(--surface)}
+.date b{display:block;font-family:var(--font-display);font-size:1.9rem;line-height:1.2;padding-top:6px;font-variant-numeric:tabular-nums}
+.date span{display:block;font-size:.8rem;font-weight:700;padding:3px 0 6px}
+.cat-cultural{--cat:var(--adobe)} .cat-sports{--cat:var(--palm)} .cat-educational{--cat:var(--falaj)}
+.ev .date span{background:var(--cat);color:var(--on-accent)}
+.tag{font-size:.82rem;font-weight:700;color:var(--cat)}
+@media (max-width:420px){ .events{grid-template-columns:1fr} }
+
+/* Tutorials */
+.tuts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start}
+.tut{padding:0;overflow:hidden}
+.tut summary{list-style:none;cursor:pointer;display:flex;gap:14px;align-items:center;padding:20px;min-height:var(--tap)}
+.tut summary::-webkit-details-marker{display:none}
+.tut .ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:var(--surface-2);color:var(--palm);flex-shrink:0}
+.tut summary h3{font-size:1.15rem}
+.tut summary p{color:var(--ink-2);font-size:.92rem}
+.chev{margin-inline-start:auto;transition:transform .2s;flex-shrink:0}
+.tut[open] .chev{transform:rotate(180deg)}
+.tut-body{padding:0 20px 20px;display:grid;gap:14px}
+.fmt{display:flex;gap:6px;flex-wrap:wrap;border-bottom:2px solid var(--line);padding-bottom:10px}
+.fmt button{min-height:44px;padding-inline:12px;border-radius:10px;border:0;background:transparent;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px;color:var(--ink-2)}
+.fmt button[aria-selected="true"]{background:var(--surface-2);color:var(--ink)}
+ol.steps{margin:0;padding:0;list-style:none;counter-reset:s;display:grid;gap:10px}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:36px 1fr;gap:12px;align-items:start}
+ol.steps li::before{content:counter(s);width:36px;height:36px;border-radius:50%;background:var(--palm);color:var(--on-accent);display:grid;place-items:center;font-weight:700;font-family:var(--font-display)}
+.sign-box{border:2px dashed var(--line);border-radius:14px;padding:22px;display:flex;gap:14px;align-items:center;color:var(--ink-2)}
+.audio-box{display:grid;gap:12px}
+@media (max-width:760px){ .tuts{grid-template-columns:1fr} }
+
+/* Journey */
+.journey{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;list-style:none;padding:0;margin:0;position:relative}
+.journey::before{content:"";position:absolute;top:30px;inset-inline:10%;height:0;border-top:3px dotted var(--falaj);opacity:.6}
+.journey li{position:relative;text-align:center;display:grid;gap:8px;justify-items:center}
+.journey .n{width:60px;height:60px;border-radius:50%;background:var(--surface);border:3px solid var(--palm);display:grid;place-items:center;font-family:var(--font-display);font-size:1.5rem;color:var(--palm);font-weight:700}
+.journey b{font-size:1.05rem}
+.journey p{font-size:.9rem;color:var(--ink-2)}
+@media (max-width:760px){ .journey{grid-template-columns:1fr;text-align:start} .journey::before{display:none} .journey li{grid-template-columns:60px 1fr;text-align:start;justify-items:start;align-items:center} .journey li p{grid-column:2} }
+
+/* About */
+.about{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.about .card h3{font-size:1.15rem;color:var(--palm)}
+@media (max-width:760px){ .about{grid-template-columns:1fr} }
+.quote{margin-top:22px;padding:22px 24px;border-radius:18px;background:var(--palm);color:var(--on-accent);display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.quote b{font-family:var(--font-display);font-size:1.4rem}
+
+/* Footer */
+footer.site{background:var(--surface);border-top:1px solid var(--line);padding-block:36px 28px}
+.foot{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:28px}
+.foot h3{font-size:1rem;margin-bottom:8px}
+.foot ul{list-style:none;padding:0;margin:0;display:grid;gap:6px;color:var(--ink-2)}
+.stores{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.stores span{border:2px solid var(--line);border-radius:10px;padding:8px 14px;font-weight:700;font-size:.9rem}
+.fine{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);font-size:.85rem;color:var(--ink-2);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+@media (max-width:760px){ .foot{grid-template-columns:1fr} }
+
+/* Simple mode: fewer decorations, larger targets, hide secondary text */
+.simple .secondary,.simple .scene-box,.simple .merlons,.simple .falaj-line{display:none!important}
+.simple .hero-grid{grid-template-columns:1fr}
+.simple{--tap:58px}
+.simple .quick a{min-height:92px;font-size:1.2rem}
+
+@media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
+.rm *{transition:none!important;animation:none!important}
+.sway{transform-origin:50% 100%;animation:sway 6s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(-1.2deg)}50%{transform:rotate(1.2deg)}}
+.ripple{animation:flow 5s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-60}}
+</style>
+
+<a class="skip" href="#main" data-i18n="skip">تخطَّ إلى المحتوى</a>
+<div id="live" class="sr-only" aria-live="polite"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<pattern id="merlonA" width="24" height="12" patternUnits="userSpaceOnUse"><rect width="13" height="12" fill="var(--adobe)"/></pattern>
+<pattern id="merlonS" width="28" height="14" patternUnits="userSpaceOnUse"><rect width="16" height="14" fill="var(--adobe-soft)"/></pattern>
+<symbol id="man" viewBox="0 0 40 110">
+ <path d="M9 34 Q20 26 31 34 L36 106 Q20 110 4 106 Z" fill="var(--robe)" stroke="var(--ink-2)" stroke-width="1.5"/>
+ <path d="M20 37 v20" stroke="var(--ink-2)" stroke-width="1.2" opacity=".5"/>
+ <path d="M9 18 Q9 5 20 5 Q31 5 31 18 L35 36 Q27 29 20 29 Q13 29 5 36 Z" fill="var(--robe)" stroke="var(--ink-2)" stroke-width="1.5"/>
+ <circle cx="20" cy="18" r="8" fill="var(--skin)"/>
+ <path d="M11.5 15 Q20 3 28.5 15 Q20 10 11.5 15 Z" fill="var(--robe)" stroke="var(--ink-2)" stroke-width="1"/>
+ <ellipse cx="20" cy="8.5" rx="9.5" ry="2.8" fill="none" stroke="var(--abaya)" stroke-width="2.4"/>
+</symbol>
+<symbol id="woman" viewBox="0 0 40 110">
+ <path d="M10 34 Q20 27 30 34 L37 106 Q20 110 3 106 Z" fill="var(--abaya)" stroke="var(--line)" stroke-width="1.5"/>
+ <path d="M8 20 Q8 4 20 4 Q32 4 32 20 L34 37 Q20 30 6 37 Z" fill="var(--abaya)" stroke="var(--line)" stroke-width="1"/>
+ <ellipse cx="20" cy="19" rx="6.5" ry="8" fill="var(--skin)"/>
+ <path d="M13 16 Q20 6 27 16 Q20 12 13 16 Z" fill="var(--abaya)"/>
+</symbol>
+<symbol id="interp" viewBox="0 0 40 110">
+ <path d="M11 38 L3 20" stroke="var(--abaya)" stroke-width="6" stroke-linecap="round"/><circle cx="3" cy="17" r="3.8" fill="var(--skin)"/>
+ <path d="M29 38 L37 24" stroke="var(--abaya)" stroke-width="6" stroke-linecap="round"/><circle cx="37.5" cy="21" r="3.8" fill="var(--skin)"/>
+ <use href="#woman" width="40" height="110"/>
+</symbol>
+<symbol id="kid" viewBox="0 0 30 70">
+ <path d="M8 26 Q15 20 22 26 L27 66 Q15 69 3 66 Z" fill="var(--adobe)"/>
+ <circle cx="15" cy="13" r="8" fill="var(--abaya)"/><circle cx="15" cy="15" r="6.5" fill="var(--skin)"/>
+ <path d="M8 12 Q15 3 22 12 Q15 9 8 12 Z" fill="var(--abaya)"/>
+</symbol>
+<symbol id="wc" viewBox="0 0 70 90">
+ <path d="M18 28 L22 64" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+ <path d="M20 30 Q28 24 36 30 L38 58 L22 60 Z" fill="var(--robe)" stroke="var(--ink-2)" stroke-width="1.5"/>
+ <path d="M24 55 L50 55 L52 76 L45 76 L43 64 L26 64 Z" fill="var(--robe)" stroke="var(--ink-2)" stroke-width="1.5"/>
+ <path d="M32 36 Q40 44 44 50" stroke="var(--ink-2)" stroke-width="1.5" fill="none"/>
+ <circle cx="30" cy="66" r="19" fill="none" stroke="var(--ink)" stroke-width="4"/>
+ <circle cx="30" cy="66" r="14.5" fill="none" stroke="var(--ink-2)" stroke-width="1.5"/>
+ <circle cx="30" cy="66" r="3" fill="var(--ink)"/>
+ <path d="M30 66 L54 78 M44 79 L57 79" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+ <circle cx="54" cy="83" r="5" fill="none" stroke="var(--ink)" stroke-width="3"/>
+ <path d="M17 16 Q17 3 28 3 Q39 3 39 16 L42 32 Q35 26 28 26 Q21 26 14 32 Z" fill="var(--robe)" stroke="var(--ink-2)" stroke-width="1.5"/>
+ <circle cx="28" cy="16" r="8" fill="var(--skin)"/>
+ <path d="M19.5 13 Q28 1 36.5 13 Q28 8 19.5 13 Z" fill="var(--robe)" stroke="var(--ink-2)" stroke-width="1"/>
+ <ellipse cx="28" cy="6.5" rx="9.5" ry="2.7" fill="none" stroke="var(--abaya)" stroke-width="2.4"/>
+</symbol>
+<symbol id="ghaf" viewBox="0 0 200 150">
+ <path d="M88 150 Q96 112 97 88 L105 88 Q104 114 112 150 Z" fill="var(--stone)"/>
+ <path d="M98 98 C90 88 80 84 66 80 M102 96 C112 86 124 82 138 80 M100 92 C100 80 96 70 90 60" stroke="var(--stone)" stroke-width="6" stroke-linecap="round" fill="none"/>
+ <ellipse cx="100" cy="62" rx="92" ry="34" fill="var(--palm)" opacity=".8"/>
+ <ellipse cx="58" cy="70" rx="48" ry="22" fill="var(--palm)" opacity=".9"/>
+ <ellipse cx="146" cy="68" rx="50" ry="23" fill="var(--palm)" opacity=".9"/>
+ <ellipse cx="102" cy="40" rx="62" ry="26" fill="var(--palm)"/>
+ <path d="M40 78 v14 M70 86 v10 M130 86 v12 M160 80 v12" stroke="var(--palm)" stroke-width="2" opacity=".7"/>
+</symbol>
+<g id="lant"><path d="M0 0 V22" stroke="var(--stone)" stroke-width="2"/><circle cx="0" cy="37" r="18" fill="var(--sun)" opacity=".25"/><path d="M-8 22 h16 l4 8 v14 l-4 6 h-16 l-4 -6 v-14 Z" fill="var(--sun)" stroke="var(--adobe)" stroke-width="2"/><path d="M-8 30 h16 M-8 44 h16" stroke="var(--adobe)" stroke-width="1.5"/></g>
+<symbol id="ev-cultural" viewBox="0 0 320 90">
+ <rect width="320" height="90" fill="var(--adobe-soft)"/>
+ <rect y="58" width="320" height="32" fill="var(--adobe)" opacity=".22"/>
+ <rect y="48" width="320" height="10" fill="url(#merlonA)" opacity=".5"/>
+ <use href="#lant" x="70" y="0"/><use href="#lant" x="160" y="4"/><use href="#lant" x="250" y="0"/>
+</symbol>
+<symbol id="ev-sports" viewBox="0 0 320 90">
+ <rect width="320" height="90" fill="var(--surface-2)"/>
+ <path d="M0 70 H320 M160 0 V90" stroke="var(--palm)" stroke-width="2" opacity=".35"/><circle cx="160" cy="70" r="26" fill="none" stroke="var(--palm)" stroke-width="2" opacity=".35"/>
+ <circle cx="86" cy="46" r="30" fill="none" stroke="var(--palm)" stroke-width="6"/>
+ <path d="M86 16 V76 M56 46 H116 M65 25 L107 67 M107 25 L65 67" stroke="var(--palm)" stroke-width="2" opacity=".7"/><circle cx="86" cy="46" r="5" fill="var(--palm)"/>
+ <circle cx="238" cy="44" r="24" fill="var(--adobe)"/>
+ <path d="M214 44 H262 M238 20 V68 M221 27 Q238 44 221 61 M255 27 Q238 44 255 61" stroke="var(--ink)" stroke-width="2" fill="none" opacity=".75"/>
+</symbol>
+<symbol id="ev-educational" viewBox="0 0 320 90">
+ <rect width="320" height="90" fill="var(--surface-2)"/>
+ <path d="M110 24 Q135 16 158 26 V76 Q135 66 110 74 Z" fill="var(--surface)" stroke="var(--falaj)" stroke-width="2.5"/>
+ <path d="M206 24 Q181 16 162 26 V76 Q181 66 206 74 Z" fill="var(--surface)" stroke="var(--falaj)" stroke-width="2.5"/>
+ <path d="M120 38 h28 M120 48 h28 M120 58 h20 M172 38 h24 M172 48 h24 M172 58 h16" stroke="var(--ink-2)" stroke-width="2" opacity=".5"/>
+ <rect x="236" y="22" width="60" height="42" rx="6" fill="var(--falaj)"/><path d="M258 34 v18 l14 -9 Z" fill="var(--surface)"/><path d="M256 72 h22" stroke="var(--falaj)" stroke-width="3"/>
+ <g transform="translate(40 24) scale(1.8)" fill="none" stroke="var(--falaj)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11V6a1.5 1.5 0 0 1 3 0v4M10 10V4.5a1.5 1.5 0 0 1 3 0V10M13 10V5.5a1.5 1.5 0 0 1 3 0V12M16 9.5a1.5 1.5 0 0 1 3 0V15a7 7 0 0 1-7 7h-.5a6 6 0 0 1-4.9-2.6L4 15.5a1.5 1.5 0 0 1 2.4-1.8L7 14.5"/></g>
+</symbol>
+<clipPath id="tabClip"><rect x="260" y="80" width="170" height="120" rx="8"/></clipPath>
+</defs></svg>
+
+
+<header class="site">
+  <div class="merlons" aria-hidden="true"></div>
+  <div class="wrap bar" style="position:relative">
+    <a class="brand" href="#top" aria-label="همّة">
+      <svg width="44" height="44" viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--palm)" aria-hidden="true"><circle cx="36" cy="36" r="32"/><circle cx="38" cy="18" r="4.5"/><path d="M37 26v14h12l5 12"/><path d="M30 34a13 13 0 1 0 17 17"/></svg>
+      <span><b data-i18n="brand">همّة</b><small data-i18n="brandSub">منصة خدمات أصحاب الهمم</small></span>
+    </a>
+    <nav class="main" id="nav" aria-label="القائمة الرئيسية" data-i18n-aria="navLabel">
+      <ul>
+        <li><a href="#centers" data-i18n="nav1">المراكز الصحية</a></li>
+        <li><a href="#events" data-i18n="nav2">الفعاليات</a></li>
+        <li><a href="#guides" data-i18n="nav3">الشروحات</a></li>
+        <li><a href="#about" data-i18n="nav4">عن المبادرة</a></li>
+      </ul>
+    </nav>
+    <div class="tools">
+      <button class="btn outline" id="langBtn" lang="en" aria-label="Switch to English">EN</button>
+      <button class="btn outline" id="a11yBtn" aria-expanded="false" aria-controls="a11yPop">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="4.5" r="2"/><path d="M4 8.5l8 1.5 8-1.5M12 10v5l-3 6M12 15l3 6"/></svg>
+        <span class="label-long" data-i18n="a11y">الإتاحة</span>
+      </button>
+      <button class="btn danger" id="emBtn" aria-expanded="false" aria-controls="emPop">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/></svg>
+        <span class="label-long" data-i18n="em">طوارئ</span>
+      </button>
+      <button class="btn outline menu-toggle" id="menuBtn" aria-expanded="false" aria-controls="nav">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <span class="sr-only" data-i18n="menu">القائمة</span>
+      </button>
+    </div>
+
+    <div class="pop" id="a11yPop" role="dialog" aria-labelledby="a11yTitle" hidden>
+      <h2 id="a11yTitle" data-i18n="a11yTitle">إعدادات الإتاحة</h2>
+      <div class="opt-row"><span data-i18n="optSize">حجم النص</span>
+        <div class="seg" role="group" aria-label="حجم النص" data-i18n-aria="optSize">
+          <button data-fs="0" aria-pressed="true">A</button><button data-fs="1" aria-pressed="false" style="font-size:1.1em">A</button><button data-fs="2" aria-pressed="false" style="font-size:1.25em">A</button><button data-fs="3" aria-pressed="false" style="font-size:1.4em">A</button>
+        </div></div>
+      <div class="opt-row"><span id="l-hc" data-i18n="optHc">تباين عالٍ</span><button class="switch" role="switch" aria-checked="false" aria-labelledby="l-hc" data-opt="hc"></button></div>
+      <div class="opt-row"><span id="l-rd" data-i18n="optRead">خط سهل القراءة</span><button class="switch" role="switch" aria-checked="false" aria-labelledby="l-rd" data-opt="readable"></button></div>
+      <div class="opt-row"><span id="l-sm" data-i18n="optSimple">الوضع المبسّط</span><button class="switch" role="switch" aria-checked="false" aria-labelledby="l-sm" data-opt="simple"></button></div>
+      <div class="opt-row"><span id="l-rm" data-i18n="optMotion">إيقاف الحركة</span><button class="switch" role="switch" aria-checked="false" aria-labelledby="l-rm" data-opt="rm"></button></div>
+      <button class="btn outline" id="resetA11y" data-i18n="optReset">استعادة الإعدادات الافتراضية</button>
+    </div>
+
+    <div class="pop" id="emPop" role="dialog" aria-labelledby="emTitle" hidden>
+      <h2 id="emTitle" data-i18n="emTitle">أرقام الطوارئ في الإمارات</h2>
+      <div class="em-num"><span data-i18n="emAmb">الإسعاف</span><span>998</span></div>
+      <div class="em-num"><span data-i18n="emPol">الشرطة</span><span>999</span></div>
+      <div class="em-num"><span data-i18n="emFire">الدفاع المدني</span><span>997</span></div>
+      <p class="secondary" style="font-size:.9rem;color:var(--ink-2)" data-i18n="emNote">في التطبيق، يرسل زر الطوارئ موقعك إلى جهة الاتصال التي تحددها في ملفك.</p>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow" data-i18n="eyebrow">من العين، مدينة الواحات، إلى كل الإمارات</span>
+        <h1><span data-i18n="h1a">خدماتك بين يديك…</span> <em data-i18n="h1b">بلا حواجز</em></h1>
+        <p class="lead" data-i18n="lead">دليل موحّد يساعدك على إيجاد المركز الصحي المناسب لحالتك وموقعك، ومعرفة الفعاليات المهيأة لك، وتعلّم إنجاز أمورك اليومية خطوة بخطوة.</p>
+        <div class="quick">
+          <a href="#centers"><span class="ic" style="background:var(--palm)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><path d="M12 7v5M9.5 9.5h5"/></svg></span><span><span data-i18n="q1">مركز صحي قريب</span><small class="secondary" data-i18n="q1s">حسب موقعك وحالتك</small></span></a>
+          <a href="#events"><span class="ic" style="background:var(--adobe)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><span><span data-i18n="q2">فعاليات تهمّك</span><small class="secondary" data-i18n="q2s">ثقافية، رياضية، تعليمية</small></span></a>
+          <a href="#guides"><span class="ic" style="background:var(--falaj)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M10 8.5v5l4-2.5z"/><path d="M8 21h8"/></svg></span><span><span data-i18n="q3">شروحات خطوة بخطوة</span><small class="secondary" data-i18n="q3s">إشارة، صوت، صور</small></span></a>
+          <a href="#about"><span class="ic" style="background:var(--stone)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg></span><span><span data-i18n="q4">تعرّف على همّة</span><small class="secondary" data-i18n="q4s">الرؤية وكيف نعمل</small></span></a>
+        </div>
+      </div>
+      <div class="scene-box">
+        <svg class="scene" viewBox="0 0 520 400" role="img" aria-labelledby="sceneT">
+          <title id="sceneT">رسم لواحة العين: جبل حفيت، برج طيني، نخيل، وقناة فلج</title>
+          <defs>
+            <symbol id="palm" viewBox="0 0 80 160">
+              <path d="M40 160 C42 120 38 90 41 52" stroke="var(--stone)" stroke-width="7" fill="none" stroke-linecap="round"/>
+              <path d="M41 52 C28 42 14 44 2 56 M41 52 C30 34 18 30 6 32 M41 52 C38 32 34 20 24 8 M41 52 C46 32 52 20 62 10 M41 52 C54 36 66 32 78 36 M41 52 C54 44 68 46 78 58" stroke="var(--palm)" stroke-width="6" fill="none" stroke-linecap="round"/>
+              <circle cx="36" cy="60" r="4" fill="var(--adobe)"/><circle cx="45" cy="61" r="4" fill="var(--adobe)"/>
+            </symbol>
+          </defs>
+          <rect width="520" height="400" rx="24" fill="var(--sky)"/>
+          <circle cx="400" cy="92" r="46" fill="var(--sun)" opacity=".85"/>
+          <path d="M0 230 L70 196 L130 170 L190 150 L250 118 L300 104 L345 122 L400 150 L460 176 L520 190 L520 400 L0 400Z" fill="var(--ridge)"/>
+          <path d="M0 262 L90 232 L170 220 L260 198 L340 214 L430 232 L520 240 L520 400 L0 400Z" fill="var(--ridge-2)"/>
+          <path d="M250 118 L262 128 L270 122 L284 134 L300 104" fill="none" stroke="var(--surface)" stroke-width="2" opacity=".5"/>
+          <!-- round fort tower with crenellations -->
+          <g>
+            <rect x="92" y="190" width="96" height="112" fill="var(--adobe-soft)" stroke="var(--adobe)" stroke-width="3"/>
+            <path d="M92 190 v-14 h14 v14 h13 v-14 h14 v14 h13 v-14 h14 v14 h13 v-14 h13 v14" fill="var(--adobe-soft)" stroke="var(--adobe)" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M126 302 v-40 a14 14 0 0 1 28 0 v40" fill="var(--adobe)"/>
+            <rect x="106" y="214" width="10" height="18" rx="5" fill="var(--adobe)"/><rect x="164" y="214" width="10" height="18" rx="5" fill="var(--adobe)"/>
+            <rect x="188" y="236" width="80" height="66" fill="var(--adobe-soft)" stroke="var(--adobe)" stroke-width="3"/>
+            <path d="M188 236 v-10 h12 v10 h12 v-10 h12 v10 h12 v-10 h12 v10 h12 v-10 h8 v10" fill="var(--adobe-soft)" stroke="var(--adobe)" stroke-width="3" stroke-linejoin="round"/>
+          </g>
+          <use href="#palm" x="300" y="150" width="90" height="180" class="sway"/>
+          <use href="#palm" x="360" y="170" width="80" height="160" class="sway" style="animation-delay:-2s"/>
+          <use href="#palm" x="430" y="140" width="96" height="192" class="sway" style="animation-delay:-4s"/>
+          <use href="#palm" x="20" y="200" width="70" height="140" class="sway" style="animation-delay:-1s"/>
+          <rect x="0" y="300" width="520" height="100" fill="var(--surface-2)"/>
+          <!-- falaj channel -->
+          <path d="M0 340 C80 330 150 352 240 342 S400 330 520 344" fill="none" stroke="var(--falaj)" stroke-width="16" stroke-linecap="round" opacity=".85"/>
+          <path d="M0 340 C80 330 150 352 240 342 S400 330 520 344" fill="none" stroke="var(--surface)" stroke-width="2.5" stroke-dasharray="14 16" class="ripple" opacity=".8"/>
+          <!-- person in wheelchair on the path -->
+          <g transform="translate(250 262)" stroke="var(--ink)" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="14" cy="-2" r="5" fill="var(--ink)" stroke="none"/>
+            <path d="M13 6v14h12l5 12"/><path d="M7 16a12 12 0 1 0 16 16"/>
+          </g>
+        </svg>
+        <p class="scene-cap secondary" data-i18n="sceneCap">مستوحى من واحة العين وجبل حفيت وأبراج الطين والأفلاج، من مواقع العين الثقافية المدرجة في قائمة التراث العالمي.</p>
+      </div>
+    </div>
+  </section>
+  <div class="falaj-line" aria-hidden="true"></div>
+
+  <!-- HEALTH CENTRES -->
+  <section class="block alt" id="centers" aria-labelledby="centersH">
+    <div class="wrap">
+      <div class="sec-head with-art">
+        <div><span class="kicker" data-i18n="k1">دليل المراكز الصحية</span>
+          <h2 id="centersH" data-i18n="centersH">ابحث عن مركز صحي مهيأ لحالتك</h2>
+          <p class="secondary" data-i18n="centersP">اختر الإمارة ونوع الحالة وما تحتاجه من تجهيزات، وستظهر المراكز الأقرب إليك.</p></div>
+        <figure class="art"><svg viewBox="0 0 560 320" role="img" aria-labelledby="art1t"><title id="art1t" data-i18n="art1">مركز صحي مهيأ بمنحدر ومواقف مخصصة، يصل إليه شاب على كرسي متحرك</title>
+ <rect width="560" height="320" rx="22" fill="var(--sky)"/><circle cx="470" cy="62" r="34" fill="var(--sun)" opacity=".8"/>
+ <path d="M0 200 L90 170 L170 180 L260 150 L340 168 L430 150 L560 175 L560 320 L0 320Z" fill="var(--ridge)" opacity=".75"/>
+ <rect y="250" width="560" height="70" fill="var(--surface-2)"/>
+ <use href="#palm" x="4" y="110" width="80" height="160"/>
+ <rect x="250" y="100" width="250" height="150" fill="var(--adobe-soft)" stroke="var(--adobe)" stroke-width="3"/>
+ <rect x="250" y="88" width="250" height="12" fill="url(#merlonA)"/>
+ <path d="M272 176 v-32 a12 12 0 0 1 24 0 v32z M316 176 v-32 a12 12 0 0 1 24 0 v32z M452 176 v-32 a12 12 0 0 1 24 0 v32z" fill="var(--falaj)" fill-opacity=".45" stroke="var(--adobe)" stroke-width="2"/>
+ <path d="M372 226 v-48 a24 24 0 0 1 48 0 v48z" fill="var(--falaj)" fill-opacity=".6" stroke="var(--adobe)" stroke-width="2"/><path d="M396 160 v66" stroke="var(--surface)" stroke-width="2"/>
+ <circle cx="396" cy="128" r="18" fill="var(--surface)" stroke="var(--palm)" stroke-width="3"/><path d="M396 118 v20 M386 128 h20" stroke="var(--palm)" stroke-width="5" stroke-linecap="round"/>
+ <rect x="350" y="226" width="96" height="24" fill="var(--stone)" opacity=".4"/>
+ <polygon points="230,250 350,226 350,250" fill="var(--stone)" opacity=".55"/>
+ <path d="M232 236 L350 212 M262 230 V244 M320 218 V232 M348 212 V226" stroke="var(--ink-2)" stroke-width="3" stroke-linecap="round"/>
+ <use href="#wc" x="262" y="170" width="56" height="72" transform="rotate(-11 290 206)"/>
+ <path d="M40 272 H224" stroke="var(--falaj)" stroke-width="3" stroke-dasharray="8 8" stroke-linecap="round"/>
+ <path d="M120 250 V168" stroke="var(--ink-2)" stroke-width="4"/><rect x="98" y="126" width="44" height="44" rx="7" fill="var(--falaj)"/>
+ <g stroke="var(--surface)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="122" cy="137" r="2.5" fill="var(--surface)"/><path d="M121 143 v10 h8 l4 7"/><path d="M115 148 a8 8 0 1 0 11 11"/></g>
+ <use href="#woman" x="156" y="150" width="36" height="99"/>
+ <path d="M204 44 c-14 0 -24 10 -24 23 c0 17 24 37 24 37 s24 -20 24 -37 c0 -13 -10 -23 -24 -23z" fill="var(--palm)"/><circle cx="204" cy="67" r="8" fill="var(--surface)"/>
+ <use href="#palm" x="500" y="116" width="66" height="150"/>
+</svg></figure>
+      </div>
+      <div class="finder">
+        <form class="filters" id="cFilters" aria-label="تصفية المراكز" data-i18n-aria="filterLabel">
+          <div><label class="flabel" for="emirate" data-i18n="fEmirate">الإمارة</label>
+            <select id="emirate"></select></div>
+          <fieldset><legend data-i18n="fCond">نوع الحالة</legend><div class="chips" id="condChips"></div></fieldset>
+          <fieldset><legend data-i18n="fFeat">تجهيزات أحتاجها</legend><div id="featChecks"></div></fieldset>
+          <button type="button" class="btn outline" id="clearC" data-i18n="clear">مسح التصفية</button>
+        </form>
+        <div class="results">
+          <div class="actions" style="justify-content:space-between"><span class="count" id="cCount"></span></div>
+          <div class="note secondary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--adobe)" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" style="flex-shrink:0;margin-top:3px"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><span data-i18n="exNote">الأسماء والبيانات المعروضة أمثلة توضيحية للنموذج الأولي، وتُستبدل ببيانات الجهات الشريكة عند الإطلاق.</span></div>
+          <div id="cList" class="results"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section class="block" id="events" aria-labelledby="eventsH">
+    <div class="wrap">
+      <div class="sec-head with-art">
+        <div><span class="kicker" data-i18n="k2">الفعاليات والأنشطة</span>
+          <h2 id="eventsH" data-i18n="eventsH">فعاليات مهيأة لك هذا الموسم</h2>
+          <p class="secondary" data-i18n="eventsP">لكل فعالية مؤشر يوضح التجهيزات المتوفرة في المكان، مع التسجيل والتذكير بنقرة.</p></div>
+        <figure class="art"><svg viewBox="0 0 560 320" role="img" aria-labelledby="art2t"><title id="art2t" data-i18n="art2">أمسية في فناء قلعة طينية، مع مترجمة لغة إشارة على المسرح وجمهور متنوع</title>
+ <rect width="560" height="320" rx="22" fill="var(--sky)"/><circle cx="90" cy="84" r="40" fill="var(--sun)" opacity=".75"/>
+ <rect x="0" y="120" width="560" height="130" fill="var(--adobe-soft)"/><rect x="0" y="106" width="560" height="14" fill="url(#merlonS)"/>
+ <path d="M0 120 H560" stroke="var(--adobe)" stroke-width="2" opacity=".5"/>
+ <rect x="20" y="70" width="90" height="180" fill="var(--adobe-soft)" stroke="var(--adobe)" stroke-width="3"/><rect x="20" y="58" width="90" height="12" fill="url(#merlonA)"/>
+ <rect x="58" y="96" width="12" height="26" rx="6" fill="var(--adobe)"/>
+ <path d="M468 250 v-58 a30 30 0 0 1 60 0 v58z" fill="var(--adobe)" opacity=".8"/>
+ <path d="M110 95 Q280 150 450 95" stroke="var(--stone)" stroke-width="1.5" fill="none"/>
+ <g><circle cx="144" cy="105" r="4.5" fill="var(--sun)"/><circle cx="178" cy="113" r="4.5" fill="var(--falaj)"/><circle cx="212" cy="118" r="4.5" fill="var(--sun)"/><circle cx="246" cy="121" r="4.5" fill="var(--adobe)"/><circle cx="280" cy="122" r="4.5" fill="var(--sun)"/><circle cx="314" cy="121" r="4.5" fill="var(--falaj)"/><circle cx="348" cy="118" r="4.5" fill="var(--sun)"/><circle cx="382" cy="113" r="4.5" fill="var(--adobe)"/><circle cx="416" cy="105" r="4.5" fill="var(--sun)"/></g>
+ <ellipse cx="330" cy="199" rx="44" ry="9" fill="var(--sun)" opacity=".4"/>
+ <use href="#man" x="232" y="100" width="36" height="99"/><use href="#interp" x="312" y="100" width="36" height="99"/>
+ <rect x="186" y="198" width="210" height="8" fill="var(--adobe)"/><rect x="186" y="206" width="210" height="18" fill="var(--stone)" opacity=".55"/>
+ <rect y="250" width="560" height="70" fill="var(--surface-2)"/>
+ <use href="#man" x="60" y="224" width="40" height="110"/><use href="#woman" x="128" y="228" width="40" height="110"/>
+ <use href="#wc" x="196" y="234" width="70" height="90"/><use href="#kid" x="290" y="262" width="30" height="70"/>
+ <use href="#woman" x="338" y="226" width="40" height="110"/><use href="#man" x="408" y="222" width="40" height="110"/><use href="#man" x="478" y="230" width="40" height="110"/>
+</svg></figure>
+      </div>
+      <div class="tabs" role="group" aria-label="نوع الفعالية" data-i18n-aria="evType" id="evTabs"></div>
+      <div class="events" id="evList"></div>
+    </div>
+  </section>
+
+  <!-- GUIDES -->
+  <section class="block alt" id="guides" aria-labelledby="guidesH">
+    <div class="wrap">
+      <div class="sec-head with-art">
+        <div><span class="kicker" data-i18n="k3">مركز الشروحات</span>
+          <h2 id="guidesH" data-i18n="guidesH">تعلّم إنجاز أمورك خطوة بخطوة</h2>
+          <p class="secondary" data-i18n="guidesP">كل شرح متاح بثلاث صيغ: خطوات مصوّرة بنص مبسّط، ودليل صوتي، وفيديو بلغة الإشارة الإماراتية.</p></div>
+        <figure class="art"><svg viewBox="0 0 560 320" role="img" aria-labelledby="art3t"><title id="art3t" data-i18n="art3">هاتف بنص مكبّر ودليل صوتي، وشاشة تعرض مترجمة لغة إشارة، وحافلة بمنحدر عند محطة</title>
+ <rect width="560" height="320" rx="22" fill="var(--sky)"/>
+ <path d="M0 230 Q140 180 280 220 T560 206 V320 H0Z" fill="var(--ridge)" opacity=".65"/>
+ <path d="M0 262 Q180 232 340 258 T560 250 V320 H0Z" fill="var(--ridge-2)" opacity=".6"/>
+ <rect y="258" width="560" height="62" fill="var(--surface-2)"/>
+ <rect x="70" y="38" width="140" height="252" rx="22" fill="var(--ink)"/><rect x="80" y="54" width="120" height="220" rx="14" fill="var(--surface)"/>
+ <rect x="80" y="54" width="120" height="38" rx="14" fill="var(--palm)"/><rect x="80" y="78" width="120" height="14" fill="var(--palm)"/>
+ <text x="140" y="136" text-anchor="middle" direction="ltr" unicode-bidi="bidi-override" font-family="Reem Kufi, sans-serif" font-size="38" font-weight="700" fill="var(--ink)">A+</text>
+ <g fill="var(--palm)"><circle cx="97" cy="164" r="9"/><circle cx="97" cy="198" r="9"/><circle cx="97" cy="232" r="9"/></g>
+ <g fill="var(--line)"><rect x="112" y="160" width="76" height="8" rx="4"/><rect x="112" y="194" width="64" height="8" rx="4"/><rect x="112" y="228" width="70" height="8" rx="4"/></g>
+ <path d="M220 140 a14 14 0 0 1 0 22 M230 130 a26 26 0 0 1 0 42" fill="none" stroke="var(--falaj)" stroke-width="4" stroke-linecap="round"/>
+ <rect x="250" y="70" width="190" height="140" rx="16" fill="var(--ink)"/><rect x="260" y="80" width="170" height="120" rx="8" fill="var(--surface-2)"/>
+ <g clip-path="url(#tabClip)"><use href="#interp" x="321" y="92" width="48" height="132"/></g>
+ <circle cx="282" cy="182" r="11" fill="var(--palm)"/><path d="M279 176 v12 l9 -6z" fill="var(--on-accent)"/>
+ <rect x="440" y="196" width="118" height="60" rx="10" fill="var(--falaj)"/>
+ <g fill="var(--surface)" opacity=".85"><rect x="452" y="206" width="22" height="18" rx="3"/><rect x="480" y="206" width="22" height="18" rx="3"/><rect x="508" y="206" width="22" height="18" rx="3"/><rect x="536" y="206" width="16" height="18" rx="3"/></g>
+ <circle cx="464" cy="257" r="9" fill="var(--ink)"/><circle cx="530" cy="257" r="9" fill="var(--ink)"/>
+ <polygon points="440,246 412,258 440,258" fill="var(--stone)"/>
+ <use href="#man" x="370" y="158" width="36" height="99"/>
+ <path d="M400 214 L418 258" stroke="var(--robe)" stroke-width="3.5" stroke-linecap="round"/><path d="M400 214 L418 258" stroke="var(--ink-2)" stroke-width="1" opacity=".5"/><circle cx="418.5" cy="258" r="3" fill="var(--danger)"/>
+</svg></figure>
+      </div>
+      <div class="tuts" id="tutList"></div>
+    </div>
+  </section>
+
+  <!-- JOURNEY + ABOUT -->
+  <section class="block" id="about" aria-labelledby="aboutH">
+    <div class="wrap">
+      <div class="sec-head with-art">
+        <div><span class="kicker" data-i18n="k4">عن المبادرة</span>
+          <h2 id="aboutH" data-i18n="aboutH">كيف تعمل همّة</h2></div>
+        <figure class="art"><svg viewBox="0 0 560 320" role="img" aria-labelledby="art4t"><title id="art4t" data-i18n="art4">عائلات وأصحاب همم يجتمعون تحت شجرة الغاف، الشجرة الوطنية للإمارات</title>
+ <rect width="560" height="320" rx="22" fill="var(--sky)"/><circle cx="470" cy="66" r="32" fill="var(--sun)" opacity=".8"/>
+ <path d="M0 214 Q120 184 250 206 T560 196 V320 H0Z" fill="var(--ridge)" opacity=".65"/>
+ <rect y="250" width="560" height="70" fill="var(--surface-2)"/>
+ <path d="M60 60 q6 -6 12 0 q6 -6 12 0 M96 44 q5 -5 10 0 q5 -5 10 0" stroke="var(--stone)" stroke-width="2" fill="none" stroke-linecap="round"/>
+ <use href="#ghaf" x="140" y="30" width="290" height="218"/>
+ <polygon points="176,262 404,262 426,290 152,290" fill="var(--adobe)" opacity=".85"/><path d="M168 272 H412 M160 282 H420" stroke="var(--sun)" stroke-width="2.5" opacity=".8"/>
+ <use href="#man" x="112" y="150" width="38" height="104"/><use href="#woman" x="154" y="154" width="36" height="99"/>
+ <use href="#kid" x="196" y="194" width="26" height="60"/>
+ <use href="#wc" x="298" y="176" width="60" height="77"/>
+ <use href="#man" x="384" y="150" width="38" height="104"/><path d="M420 206 L432 256" stroke="var(--stone)" stroke-width="3.5" stroke-linecap="round"/>
+ <use href="#woman" x="438" y="158" width="34" height="94"/>
+</svg></figure>
+      </div>
+      <ol class="journey" id="journey"></ol>
+      <div class="about" style="margin-top:40px" id="aboutCards"></div>
+      <div class="quote"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11V6a1.5 1.5 0 0 1 3 0v4M10 10V4.5a1.5 1.5 0 0 1 3 0V10M13 10V5.5a1.5 1.5 0 0 1 3 0V12M16 9.5a1.5 1.5 0 0 1 3 0V15a7 7 0 0 1-7 7h-.5a6 6 0 0 1-4.9-2.6L4 15.5a1.5 1.5 0 0 1 2.4-1.8L7 14.5"/></svg>
+        <div><b data-i18n="quoteB">لا شيء عنّا من دوننا</b><p data-i18n="quoteP">يشارك مجلس استشاري من أصحاب الهمم في تصميم المنصة واختبارها ومراجعة محتواها.</p></div></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#top"><svg width="36" height="36" viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--palm)" aria-hidden="true"><circle cx="36" cy="36" r="32"/><circle cx="38" cy="18" r="4.5"/><path d="M37 26v14h12l5 12"/><path d="M30 34a13 13 0 1 0 17 17"/></svg><b data-i18n="brand">همّة</b></a>
+        <p style="margin-top:10px;color:var(--ink-2)" data-i18n="footP">همّة… لأن لكل همّة طريقًا. مبادرة مجتمعية مكمّلة للخدمات الحكومية وليست بديلًا عنها.</p>
+        <div class="stores"><span>App Store</span><span>Google Play</span></div>
+      </div>
+      <div><h3 data-i18n="fServices">الخدمات</h3>
+        <ul><li><a href="#centers" data-i18n="nav1">المراكز الصحية</a></li><li><a href="#events" data-i18n="nav2">الفعاليات</a></li><li><a href="#guides" data-i18n="nav3">الشروحات</a></li><li data-i18n="partnerPortal">بوابة الجهات الشريكة (قريبًا)</li></ul></div>
+      <div><h3 data-i18n="fContact">تواصل معنا</h3>
+        <ul><li style="direction:ltr;text-align:start">[info@himma.ae]</li><li style="direction:ltr;text-align:start">[himma.ae]</li><li data-i18n="fAccess">نلتزم بمعايير WCAG 2.2 بمستوى AA</li></ul></div>
+    </div>
+    <div class="fine"><span data-i18n="fine1">نموذج أولي لمشروع تخرج — تخصص العلاقات العامة، جامعة العين، 2026</span><span data-i18n="fine2">جميع البيانات المعروضة أمثلة توضيحية</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+const I = {
+ wheel:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4" r="2"/><path d="M11.5 8v6h6l2.5 6"/><path d="M8 11a6 6 0 1 0 8 8"/></svg>',
+ sign:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11V6a1.5 1.5 0 0 1 3 0v4M10 10V4.5a1.5 1.5 0 0 1 3 0V10M13 10V5.5a1.5 1.5 0 0 1 3 0V12M16 9.5a1.5 1.5 0 0 1 3 0V15a7 7 0 0 1-7 7h-.5a6 6 0 0 1-4.9-2.6L4 15.5a1.5 1.5 0 0 1 2.4-1.8L7 14.5"/></svg>',
+ park:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>',
+ sensory:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M20 15a8 8 0 1 1-11-11 7 7 0 0 0 11 11z"/></svg>',
+ braille:'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="8" cy="5" r="2"/><circle cx="16" cy="5" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="8" cy="19" r="2"/><circle cx="16" cy="19" r="2"/></svg>',
+ audio:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>',
+ pin:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>',
+ clock:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+ heart:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11z"/></svg>',
+ chev:'<svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>',
+ play:'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg>',
+ stop:'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>',
+ card:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="12" r="2.5"/><path d="M13 10h5M13 14h3"/></svg>',
+ bus:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="3" width="16" height="15" rx="3"/><path d="M4 11h16M8 18v3M16 18v3"/><circle cx="8" cy="14.5" r="1"/><circle cx="16" cy="14.5" r="1"/></svg>',
+ phone:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg>',
+ cal:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M9 15l2 2 4-4"/></svg>'
+};
+
+const T = {
+ ar:{skip:'تخطَّ إلى المحتوى',brand:'همّة',brandSub:'منصة خدمات أصحاب الهمم',navLabel:'القائمة الرئيسية',nav1:'المراكز الصحية',nav2:'الفعاليات',nav3:'الشروحات',nav4:'عن المبادرة',a11y:'الإتاحة',em:'طوارئ',menu:'القائمة',
+  a11yTitle:'إعدادات الإتاحة',optSize:'حجم النص',optHc:'تباين عالٍ',optRead:'خط سهل القراءة',optSimple:'الوضع المبسّط',optMotion:'إيقاف الحركة',optReset:'استعادة الإعدادات الافتراضية',
+  emTitle:'أرقام الطوارئ في الإمارات',emAmb:'الإسعاف',emPol:'الشرطة',emFire:'الدفاع المدني',emNote:'في التطبيق، يرسل زر الطوارئ موقعك إلى جهة الاتصال التي تحددها في ملفك.',
+  eyebrow:'من العين، مدينة الواحات، إلى كل الإمارات',h1a:'خدماتك بين يديك…',h1b:'بلا حواجز',lead:'دليل موحّد يساعدك على إيجاد المركز الصحي المناسب لحالتك وموقعك، ومعرفة الفعاليات المهيأة لك، وتعلّم إنجاز أمورك اليومية خطوة بخطوة.',
+  q1:'مركز صحي قريب',q1s:'حسب موقعك وحالتك',q2:'فعاليات تهمّك',q2s:'ثقافية، رياضية، تعليمية',q3:'شروحات خطوة بخطوة',q3s:'إشارة، صوت، صور',q4:'تعرّف على همّة',q4s:'الرؤية وكيف نعمل',
+  sceneCap:'مستوحى من واحة العين وجبل حفيت وأبراج الطين والأفلاج، من مواقع العين الثقافية المدرجة في قائمة التراث العالمي.',
+  k1:'دليل المراكز الصحية',centersH:'ابحث عن مركز صحي مهيأ لحالتك',centersP:'اختر الإمارة ونوع الحالة وما تحتاجه من تجهيزات، وستظهر المراكز الأقرب إليك.',filterLabel:'تصفية المراكز',fEmirate:'الإمارة',fCond:'نوع الحالة',fFeat:'تجهيزات أحتاجها',clear:'مسح التصفية',
+  exNote:'الأسماء والبيانات المعروضة أمثلة توضيحية للنموذج الأولي، وتُستبدل ببيانات الجهات الشريكة عند الإطلاق.',
+  count:n=>n===0?'لا توجد نتائج':n===1?'مركز واحد مطابق':n===2?'مركزان مطابقان':n<=10?n+' مراكز مطابقة':n+' مركزًا مطابقًا',
+  empty:'لا يوجد مركز يطابق كل الخيارات. جرّب إزالة أحد التجهيزات أو اختيار إمارة أخرى.',
+  km:'كم',away:'من موقعك',hours:'ساعات العمل',book:'احجز موعدًا',booked:'تم تسجيل طلب تجريبي. هذه نسخة توضيحية، ولم يُرسل أي حجز فعلي.',fav:'أضف إلى المفضلة',unfav:'إزالة من المفضلة',ex:'مثال',
+  k2:'الفعاليات والأنشطة',eventsH:'فعاليات مهيأة لك هذا الموسم',eventsP:'لكل فعالية مؤشر يوضح التجهيزات المتوفرة في المكان، مع التسجيل والتذكير بنقرة.',evType:'نوع الفعالية',
+  all:'الكل',cultural:'ثقافية',sports:'رياضية',educational:'تعليمية',register:'سجّلني',registered:'مسجّل — سنذكّرك قبل الموعد',companion:'أحتاج مرافقًا',compOn:'طُلب مرافق متطوع',
+  k3:'مركز الشروحات',guidesH:'تعلّم إنجاز أمورك خطوة بخطوة',guidesP:'كل شرح متاح بثلاث صيغ: خطوات مصوّرة بنص مبسّط، ودليل صوتي، وفيديو بلغة الإشارة الإماراتية.',
+  fSteps:'خطوات',fAudio:'دليل صوتي',fSign:'لغة الإشارة',listen:'استمع إلى الشرح',stopL:'إيقاف',noVoice:'القراءة الصوتية غير مدعومة في هذا المتصفح. يمكنك استخدام قارئ الشاشة في جهازك.',
+  signPh:'يُضاف هنا فيديو الشرح بلغة الإشارة الإماراتية بالتعاون مع مترجمين معتمدين.',audioP:'يقرأ الدليل الصوتي الخطوات بصوت واضح وسرعة هادئة.',
+  k4:'عن المبادرة',aboutH:'كيف تعمل همّة',quoteB:'لا شيء عنّا من دوننا',quoteP:'يشارك مجلس استشاري من أصحاب الهمم في تصميم المنصة واختبارها ومراجعة محتواها.',
+  footP:'همّة… لأن لكل همّة طريقًا. مبادرة مجتمعية مكمّلة للخدمات الحكومية وليست بديلًا عنها.',fServices:'الخدمات',partnerPortal:'بوابة الجهات الشريكة (قريبًا)',fContact:'تواصل معنا',fAccess:'نلتزم بمعايير WCAG 2.2 بمستوى AA',
+  fine1:'نموذج أولي لمشروع تخرج — تخصص العلاقات العامة، جامعة العين، 2026',fine2:'جميع البيانات المعروضة أمثلة توضيحية',art1:'مركز صحي مهيأ بمنحدر ومواقف مخصصة، يصل إليه شاب على كرسي متحرك',art2:'أمسية في فناء قلعة طينية، مع مترجمة لغة إشارة على المسرح وجمهور متنوع',art3:'هاتف بنص مكبّر ودليل صوتي، وشاشة تعرض مترجمة لغة إشارة، وحافلة بمنحدر عند محطة',art4:'عائلات وأصحاب همم يجتمعون تحت شجرة الغاف، الشجرة الوطنية للإمارات',langBtn:'Switch to English'},
+ en:{skip:'Skip to content',brand:'Himma',brandSub:'Services for People of Determination',navLabel:'Main menu',nav1:'Health centres',nav2:'Events',nav3:'Guides',nav4:'About',a11y:'Accessibility',em:'Emergency',menu:'Menu',
+  a11yTitle:'Accessibility settings',optSize:'Text size',optHc:'High contrast',optRead:'Easy-read font',optSimple:'Simple mode',optMotion:'Stop motion',optReset:'Restore defaults',
+  emTitle:'UAE emergency numbers',emAmb:'Ambulance',emPol:'Police',emFire:'Civil Defence',emNote:'In the app, the emergency button sends your location to the contact you choose in your profile.',
+  eyebrow:'From Al Ain, the Garden City, to every emirate',h1a:'Your services, within reach.',h1b:'No barriers.',lead:'One guide to find the health centre that fits your condition and location, discover events ready for you, and learn everyday tasks step by step.',
+  q1:'A health centre near me',q1s:'By location and condition',q2:'Events for me',q2s:'Cultural, sports, learning',q3:'Step-by-step guides',q3s:'Sign, audio, pictures',q4:'Meet Himma',q4s:'Our vision and how it works',
+  sceneCap:'Inspired by Al Ain Oasis, Jebel Hafeet, mud-brick towers and aflaj channels, part of the Cultural Sites of Al Ain on the World Heritage List.',
+  k1:'Health centre guide',centersH:'Find a health centre ready for you',centersP:'Choose an emirate, a condition and the facilities you need. The nearest matches appear first.',filterLabel:'Filter centres',fEmirate:'Emirate',fCond:'Condition',fFeat:'Facilities I need',clear:'Clear filters',
+  exNote:'Names and details shown are examples for this prototype. Partner data replaces them at launch.',
+  count:n=>n===0?'No results':n===1?'1 matching centre':n+' matching centres',
+  empty:'No centre matches every option. Try removing a facility or choosing another emirate.',
+  km:'km',away:'from you',hours:'Opening hours',book:'Book an appointment',booked:'Sample request recorded. This is a demo, so no real booking was sent.',fav:'Add to favourites',unfav:'Remove from favourites',ex:'Example',
+  k2:'Events & activities',eventsH:'Accessible events this season',eventsP:'Each event shows the facilities available at the venue. Register and get a reminder in one tap.',evType:'Event type',
+  all:'All',cultural:'Cultural',sports:'Sports',educational:'Learning',register:'Register',registered:'Registered. We will remind you before it starts',companion:'I need a companion',compOn:'Volunteer companion requested',
+  k3:'Guides',guidesH:'Learn everyday tasks step by step',guidesP:'Every guide comes in three formats: illustrated steps in plain language, an audio guide, and an Emirati Sign Language video.',
+  fSteps:'Steps',fAudio:'Audio guide',fSign:'Sign language',listen:'Listen to this guide',stopL:'Stop',noVoice:'Read-aloud is not supported in this browser. You can use your device screen reader.',
+  signPh:'An Emirati Sign Language video of this guide will appear here, produced with certified interpreters.',audioP:'The audio guide reads each step in a clear voice at a calm pace.',
+  k4:'About',aboutH:'How Himma works',quoteB:'Nothing about us without us',quoteP:'An advisory council of People of Determination helps design, test and review the platform.',
+  footP:'Himma: every determination has a way. A community initiative that complements government services and does not replace them.',fServices:'Services',partnerPortal:'Partner portal (coming soon)',fContact:'Contact',fAccess:'Built to WCAG 2.2 level AA',
+  fine1:'Graduation project prototype. Public Relations, Al Ain University, 2026',fine2:'All data shown is illustrative',art1:'An accessible health centre with a ramp and reserved parking, reached by a young man in a wheelchair',art2:'An evening in a mud-brick fort courtyard, with a sign language interpreter on stage and a diverse audience',art3:'A phone with enlarged text and an audio guide, a screen showing a sign language interpreter, and a bus with a ramp at a stop',art4:'Families and People of Determination gathering under a ghaf tree, the national tree of the UAE',langBtn:'التبديل إلى العربية'}
+};
+
+const EMIRATES=[['all','كل الإمارات','All emirates'],['auh','أبوظبي (العين)','Abu Dhabi (Al Ain)'],['auh2','أبوظبي (المدينة)','Abu Dhabi (city)'],['dxb','دبي','Dubai'],['shj','الشارقة','Sharjah'],['ajm','عجمان','Ajman'],['uaq','أم القيوين','Umm Al Quwain'],['rak','رأس الخيمة','Ras Al Khaimah'],['fuj','الفجيرة','Fujairah']];
+const CONDS=[['mobility','حركية','Mobility'],['visual','بصرية','Visual'],['hearing','سمعية','Hearing'],['intellectual','ذهنية','Intellectual'],['autism','طيف التوحد','Autism'],['chronic','أمراض مزمنة','Chronic illness']];
+const FEATS=[['wheel','مداخل للكراسي المتحركة','Wheelchair access'],['sign','مترجم لغة إشارة','Sign interpreter'],['park','مواقف مخصصة','Reserved parking'],['sensory','غرفة هادئة حسيًا','Sensory-quiet room'],['braille','لافتات بطريقة برايل','Braille signage'],['audio','وصف صوتي','Audio description']];
+
+const CENTRES=[
+ {ar:'مركز الواحة للتأهيل الطبي',en:'Al Waha Medical Rehabilitation Centre',em:'auh',area:['العين، الجيمي','Al Ain, Al Jimi'],km:2.1,conds:['mobility','autism','intellectual'],feats:['wheel','park','sensory'],hrs:['٨ص – ٨م','8am – 8pm']},
+ {ar:'عيادة حفيت للسمع والنطق',en:'Hafeet Hearing & Speech Clinic',em:'auh',area:['العين، الطوية','Al Ain, Al Towayya'],km:4.5,conds:['hearing'],feats:['sign','wheel','park'],hrs:['٩ص – ٩م','9am – 9pm']},
+ {ar:'مركز الفلج للعلاج الطبيعي',en:'Al Falaj Physiotherapy Centre',em:'auh',area:['العين، المويجعي','Al Ain, Al Muwaiji'],km:5.8,conds:['mobility','chronic'],feats:['wheel','park','braille'],hrs:['٧ص – ٧م','7am – 7pm']},
+ {ar:'عيادة القطّارة العائلية',en:'Al Qattara Family Clinic',em:'auh',area:['العين، القطّارة','Al Ain, Al Qattara'],km:7.3,conds:['chronic','visual','hearing'],feats:['wheel','sign','braille','audio'],hrs:['٨ص – ١٠م','8am – 10pm']},
+ {ar:'مركز البصيرة لطب العيون',en:'Al Baseera Eye Centre',em:'auh2',area:['أبوظبي، الخالدية','Abu Dhabi, Al Khalidiya'],km:148,conds:['visual'],feats:['wheel','park','braille','audio'],hrs:['٨ص – ٦م','8am – 6pm']},
+ {ar:'مركز نور لاضطراب طيف التوحد',en:'Noor Autism Centre',em:'dxb',area:['دبي، البرشاء','Dubai, Al Barsha'],km:132,conds:['autism','intellectual'],feats:['sensory','park','wheel'],hrs:['٨ص – ٤م','8am – 4pm']},
+ {ar:'عيادة الخان للسمعيات',en:'Al Khan Audiology Clinic',em:'shj',area:['الشارقة، الخان','Sharjah, Al Khan'],km:156,conds:['hearing'],feats:['sign','wheel'],hrs:['١٠ص – ١٠م','10am – 10pm']}
+];
+
+const EVENTS=[
+ {cat:'cultural',d:10,m:['أكتوبر','Oct'],ar:'جولة بالوصف الصوتي في قلعة الجاهلي',en:'Audio-described tour of Al Jahili Fort',place:['العين','Al Ain'],time:['٤:٠٠ م','4:00 pm'],feats:['audio','sign','wheel']},
+ {cat:'sports',d:17,m:['أكتوبر','Oct'],ar:'مباراة ودية لكرة السلة على الكراسي المتحركة',en:'Wheelchair basketball friendly match',place:['صالة رياضية، العين','Sports hall, Al Ain'],time:['٦:٣٠ م','6:30 pm'],feats:['wheel','park','sign']},
+ {cat:'educational',d:21,m:['أكتوبر','Oct'],ar:'ورشة: استخدام قارئ الشاشة في الهاتف',en:'Workshop: using your phone screen reader',place:['قاعة مجتمعية، العين','Community hall, Al Ain'],time:['٥:٠٠ م','5:00 pm'],feats:['braille','audio','wheel']},
+ {cat:'cultural',d:24,m:['أكتوبر','Oct'],ar:'أمسية حكايات شعبية بلغة الإشارة',en:'Folk tales evening in sign language',place:['واحة العين','Al Ain Oasis'],time:['٧:٠٠ م','7:00 pm'],feats:['sign','wheel','sensory']},
+ {cat:'sports',d:1,m:['نوفمبر','Nov'],ar:'مشي عائلي دامج عند سفح جبل حفيت',en:'Inclusive family walk at the foot of Jebel Hafeet',place:['جبل حفيت، العين','Jebel Hafeet, Al Ain'],time:['٧:٠٠ ص','7:00 am'],feats:['wheel','park']},
+ {cat:'educational',d:3,m:['ديسمبر','Dec'],ar:'لقاء لأولياء الأمور في اليوم الدولي للأشخاص ذوي الإعاقة: الحقوق والخدمات',en:'Parents session on International Day of Persons with Disabilities: rights and services',place:['العين','Al Ain'],time:['١٠:٠٠ ص','10:00 am'],feats:['sign','sensory','wheel']}
+];
+
+const TUTS=[
+ {ic:'card',ar:'التقديم على بطاقة أصحاب الهمم',en:'Applying for the People of Determination card',sar:'البطاقة تفتح لك خدمات وتسهيلات في جهات كثيرة',sen:'The card unlocks services and discounts across many providers',
+  ar_s:['جهّز بطاقة الهوية الإماراتية وصورة شخصية حديثة وتقريرًا طبيًا حديثًا يوضح الحالة.','ادخل إلى القناة الرقمية للجهة المختصة في إمارتك، مثل منصة «تم» في أبوظبي، باستخدام الهوية الرقمية UAE PASS.','اختر خدمة إصدار بطاقة أصحاب الهمم، وحدّد نوع الحالة وأي أجهزة مساعدة تستخدمها.','أرفق المستندات وأرسل الطلب، ثم تابع حالته من حسابك.','تأكد من المتطلبات الحالية لدى الجهة المختصة، فقد تتغير الإجراءات.'],
+  en_s:['Prepare your Emirates ID, a recent photo and a recent medical report describing the condition.','Sign in to the relevant digital channel in your emirate, such as TAMM in Abu Dhabi, with UAE PASS.','Choose the People of Determination card service, then select the condition and any assistive devices you use.','Attach the documents, submit, and follow the status from your account.','Check the current requirements with the issuing authority, as procedures can change.']},
+ {ic:'bus',ar:'التنقّل بالحافلات العامة في أبوظبي',en:'Getting around by public bus in Abu Dhabi',sar:'استفد من امتيازات بطاقة أصحاب الهمم في التنقل',sen:'Use the card benefits when you travel',
+  ar_s:['احمل بطاقة أصحاب الهمم معك، فهي تتيح التنقل مجانًا في الحافلات العامة داخل أبوظبي وضواحيها.','خطّط لرحلتك مسبقًا عبر تطبيق أو موقع أبوظبي للتنقل لمعرفة الخط والمحطة الأقرب.','عند الصعود، أظهر البطاقة للسائق واطلب استخدام المنحدر إن احتجت إليه.','في حافلات التنقل بين المدن، مثل رحلة أبوظبي – العين، يحصل حامل البطاقة على خصم ٥٠٪.'],
+  en_s:['Carry your People of Determination card. It gives free travel on public buses in Abu Dhabi and its suburbs.','Plan the trip ahead in the Abu Dhabi Mobility app or website to find your route and nearest stop.','When boarding, show the card to the driver and ask for the ramp if you need it.','On intercity buses, such as Abu Dhabi to Al Ain, card holders get 50% off.']},
+ {ic:'phone',ar:'تشغيل قارئ الشاشة في هاتفك',en:'Turning on your phone screen reader',sar:'VoiceOver في آيفون وTalkBack في أندرويد',sen:'VoiceOver on iPhone, TalkBack on Android',
+  ar_s:['في آيفون: افتح الإعدادات، ثم تسهيلات الاستخدام، ثم VoiceOver، وفعّل الخيار.','في أندرويد: افتح الإعدادات، ثم إمكانية الوصول، ثم TalkBack، وفعّل الخيار.','المس أي عنصر مرة واحدة ليُقرأ، والمسه مرتين لفتحه.','اسحب بإصبع واحد يمينًا أو يسارًا للانتقال بين العناصر.'],
+  en_s:['On iPhone: open Settings, then Accessibility, then VoiceOver, and switch it on.','On Android: open Settings, then Accessibility, then TalkBack, and switch it on.','Tap any item once to hear it, and double-tap to open it.','Swipe right or left with one finger to move between items.']},
+ {ic:'cal',ar:'حجز موعد في مركز صحي عبر همّة',en:'Booking a health centre appointment on Himma',sar:'من البحث إلى التذكير في أربع خطوات',sen:'From search to reminder in four steps',
+  ar_s:['افتح قسم المراكز الصحية، واختر إمارتك ونوع حالتك.','حدّد التجهيزات التي تحتاجها، مثل مترجم لغة الإشارة أو المواقف المخصصة.','اختر المركز المناسب واضغط «احجز موعدًا»، ثم اختر اليوم والوقت.','ستصلك رسالة تأكيد وتذكير قبل الموعد، مع خيار الملاحة الصوتية حتى باب المركز.'],
+  en_s:['Open Health centres and choose your emirate and condition.','Select the facilities you need, such as a sign interpreter or reserved parking.','Pick a centre, tap Book an appointment, then choose a day and time.','You get a confirmation and a reminder, with voice navigation to the centre door.']}
+];
+
+const JOURNEY=[['الدخول الآمن','Secure sign-in','عبر الهوية الرقمية UAE PASS','With UAE PASS digital identity'],['ملفك الشخصي','Your profile','حدّد احتياجاتك وتفضيلات العرض','Set your needs and display preferences'],['اقتراحات لك','Suggestions for you','مراكز وفعاليات وشروحات تناسبك','Centres, events and guides that fit you'],['احجز وسجّل','Book and register','موعد أو مقعد بخطوة واحدة','An appointment or a seat in one step'],['قيّم التجربة','Rate the visit','تقييمك يحسّن دقة الدليل','Your rating keeps the guide accurate']];
+const ABOUT=[['رؤيتنا','Our vision','مجتمع إماراتي دامج يعيش فيه أصحاب الهمم حياة مستقلة وكريمة بسهولة ويسر.','An inclusive Emirati society where People of Determination live independent, dignified lives with ease.'],['رسالتنا','Our mission','منصة موحدة موثوقة تصل صاحب الهمة بالخدمة المناسبة لحالته وموقعه، وتمنحه المعرفة ليعتمد على نفسه.','One trusted platform that connects each person to the right service for their condition and location, and the know-how to do things independently.'],['لمن همّة؟','Who is Himma for?','أصحاب الهمم بمختلف فئاتهم، وأسرهم ومقدمو الرعاية، والجهات الصحية ومنظمو الفعاليات.','People of Determination of every category, their families and carers, and health providers and event organisers.']];
+
+// ---------- state & prefs ----------
+const root=document.documentElement;
+const S={lang:'ar',emirate:'all',conds:new Set(),feats:new Set(),cat:'all',booked:new Set(),favs:new Set(),reg:new Set(),comp:new Set(),fs:0,hc:false,readable:false,simple:false,rm:false};
+const store={get(){try{return JSON.parse(localStorage.getItem('himma')||'{}')}catch(e){return{}}},set(o){try{localStorage.setItem('himma',JSON.stringify(o))}catch(e){}}};
+const saved=store.get(); ['lang','fs','hc','readable','simple','rm'].forEach(k=>{if(k in saved)S[k]=saved[k]});
+function persist(){store.set({lang:S.lang,fs:S.fs,hc:S.hc,readable:S.readable,simple:S.simple,rm:S.rm})}
+const L=()=>S.lang==='ar'?0:1;
+const t=k=>T[S.lang][k];
+const $=s=>document.querySelector(s);
+const announce=m=>{const l=$('#live');l.textContent='';setTimeout(()=>l.textContent=m,50)};
+
+function applyPrefs(){
+  root.classList.remove('fs-1','fs-2','fs-3'); if(S.fs) root.classList.add('fs-'+S.fs);
+  ['hc','readable','simple','rm'].forEach(k=>root.classList.toggle(k,!!S[k]));
+  document.querySelectorAll('[data-fs]').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.fs===S.fs)));
+  document.querySelectorAll('.switch').forEach(b=>b.setAttribute('aria-checked',String(!!S[b.dataset.opt])));
+}
+function applyLang(){
+  root.lang=S.lang; root.dir=S.lang==='ar'?'rtl':'ltr';
+  document.title=S.lang==='ar'?'همّة · Himma':'Himma · همّة';
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const v=t(el.dataset.i18n); if(typeof v==='string') el.textContent=v});
+  document.querySelectorAll('[data-i18n-aria]').forEach(el=>el.setAttribute('aria-label',t(el.dataset.i18nAria)));
+  const lb=$('#langBtn'); lb.textContent=S.lang==='ar'?'EN':'ع'; lb.lang=S.lang==='ar'?'en':'ar'; lb.setAttribute('aria-label',t('langBtn'));
+  $('#sceneT').textContent=S.lang==='ar'?'رسم لواحة العين: جبل حفيت، برج طيني، نخيل، وقناة فلج':'Illustration of Al Ain Oasis: Jebel Hafeet, a mud-brick tower, palms and a falaj channel';
+  buildFilters(); renderCentres(); renderEvents(); renderTuts(); renderAbout();
+}
+
+// ---------- centres ----------
+function buildFilters(){
+  const sel=$('#emirate'); sel.innerHTML=EMIRATES.map(e=>`<option value="${e[0]}">${e[1+L()]}</option>`).join(''); sel.value=S.emirate;
+  $('#condChips').innerHTML=CONDS.map(c=>`<button type="button" class="chip" data-cond="${c[0]}" aria-pressed="${S.conds.has(c[0])}">${c[1+L()]}</button>`).join('');
+  $('#featChecks').innerHTML=FEATS.map(f=>`<label class="check"><input type="checkbox" id="f-${f[0]}" value="${f[0]}" ${S.feats.has(f[0])?'checked':''}>${I[f[0]]}<span>${f[1+L()]}</span></label>`).join('');
+}
+const featLabel=k=>FEATS.find(f=>f[0]===k)[1+L()];
+function renderCentres(){
+  const list=CENTRES.filter(c=>(S.emirate==='all'||c.em===S.emirate)&&(!S.conds.size||[...S.conds].some(x=>c.conds.includes(x)))&&[...S.feats].every(f=>c.feats.includes(f))).sort((a,b)=>a.km-b.km);
+  $('#cCount').textContent=t('count')(list.length);
+  const box=$('#cList');
+  if(!list.length){box.innerHTML=`<div class="empty">${t('empty')}</div>`;return}
+  box.innerHTML=list.map(c=>{const id=c.en; const nm=S.lang==='ar'?c.ar:c.en; const conds=c.conds.map(k=>CONDS.find(x=>x[0]===k)[1+L()]).join(' · ');
+   return `<article class="card"><div class="card-top"><div style="display:grid;gap:6px"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><h3>${nm}</h3><span class="ex">${t('ex')}</span></div>
+    <div class="meta"><span>${I.pin}${c.area[L()]}</span><span>${I.clock}${c.hrs[L()]}</span></div><div class="meta secondary"><span>${conds}</span></div></div>
+    <div class="dist" aria-label="${c.km} ${t('km')} ${t('away')}">${c.km}<small style="font-size:.7em"> ${t('km')}</small></div></div>
+    <div class="feat">${c.feats.map(f=>`<span>${I[f]}${featLabel(f)}</span>`).join('')}</div>
+    <div class="actions"><button class="btn primary" data-book="${id}">${t('book')}</button>
+     <button class="btn outline fav" data-fav="${id}" aria-pressed="${S.favs.has(id)}" aria-label="${S.favs.has(id)?t('unfav'):t('fav')}">${I.heart}</button>
+     ${S.booked.has(id)?`<span class="status" role="status">${t('booked')}</span>`:''}</div></article>`}).join('');
+}
+
+// ---------- events ----------
+function renderEvents(){
+  $('#evTabs').innerHTML=['all','cultural','sports','educational'].map(c=>`<button class="chip" data-cat="${c}" aria-pressed="${S.cat===c}">${t(c)}</button>`).join('');
+  const list=EVENTS.filter(e=>S.cat==='all'||e.cat===S.cat);
+  $('#evList').innerHTML=list.map(e=>{const id=e.en;
+   return `<article class="card ev cat-${e.cat}"><svg class="ev-art" viewBox="0 0 320 90" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#ev-${e.cat}" width="320" height="90"/></svg><div class="date" aria-hidden="true"><b>${e.d}</b><span>${e.m[L()]}</span></div>
+    <div style="display:grid;gap:8px"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="tag">${t(e.cat)}</span><span class="ex">${t('ex')}</span></div>
+     <h3 style="font-size:1.1rem">${S.lang==='ar'?e.ar:e.en}</h3><span class="sr-only">${e.d} ${e.m[L()]}</span>
+     <div class="meta"><span>${I.pin}${e.place[L()]}</span><span>${I.clock}${e.time[L()]}</span></div>
+     <div class="feat">${e.feats.map(f=>`<span>${I[f]}${featLabel(f)}</span>`).join('')}</div>
+     <div class="actions"><button class="btn ${S.reg.has(id)?'':'primary'}" data-reg="${id}" aria-pressed="${S.reg.has(id)}">${S.reg.has(id)?t('registered'):t('register')}</button>
+      <button class="btn outline" data-comp="${id}" aria-pressed="${S.comp.has(id)}">${S.comp.has(id)?t('compOn'):t('companion')}</button></div></div></article>`}).join('');
+}
+
+// ---------- tutorials ----------
+function renderTuts(){
+  $('#tutList').innerHTML=TUTS.map((g,i)=>{const steps=S.lang==='ar'?g.ar_s:g.en_s;
+   return `<details class="card tut" ${i===0?'open':''}><summary><span class="ic">${I[g.ic]}</span><span><h3>${S.lang==='ar'?g.ar:g.en}</h3><p class="secondary">${S.lang==='ar'?g.sar:g.sen}</p></span>${I.chev}</summary>
+   <div class="tut-body"><div class="fmt" role="tablist">
+     <button role="tab" aria-selected="true" aria-controls="p${i}s" data-tab="${i}s">${t('fSteps')}</button>
+     <button role="tab" aria-selected="false" aria-controls="p${i}a" data-tab="${i}a">${I.audio}${t('fAudio')}</button>
+     <button role="tab" aria-selected="false" aria-controls="p${i}g" data-tab="${i}g">${I.sign}${t('fSign')}</button></div>
+    <div role="tabpanel" id="p${i}s"><ol class="steps">${steps.map(s=>`<li><span>${s}</span></li>`).join('')}</ol></div>
+    <div role="tabpanel" id="p${i}a" hidden><div class="audio-box"><p>${t('audioP')}</p><div class="actions"><button class="btn primary" data-speak="${i}">${I.play}${t('listen')}</button><button class="btn outline" data-stop>${I.stop}${t('stopL')}</button></div><p class="status" data-vmsg="${i}"></p></div></div>
+    <div role="tabpanel" id="p${i}g" hidden><div class="sign-box">${I.sign.replace(/18/g,'40')}<p>${t('signPh')}</p></div></div>
+   </div></details>`}).join('');
+}
+function renderAbout(){
+  $('#journey').innerHTML=JOURNEY.map((j,i)=>`<li><span class="n">${S.lang==='ar'?['١','٢','٣','٤','٥'][i]:i+1}</span><b>${j[L()]}</b><p>${j[2+L()]}</p></li>`).join('');
+  $('#aboutCards').innerHTML=ABOUT.map(a=>`<div class="card"><h3>${a[L()]}</h3><p>${a[2+L()]}</p></div>`).join('');
+}
+
+// ---------- events wiring ----------
+document.addEventListener('click',e=>{
+  const b=e.target.closest('button,a'); if(!b)return;
+  if(b.dataset.cond){const k=b.dataset.cond;S.conds.has(k)?S.conds.delete(k):S.conds.add(k);b.setAttribute('aria-pressed',S.conds.has(k));renderCentres();announce($('#cCount').textContent)}
+  else if(b.id==='clearC'){S.emirate='all';S.conds.clear();S.feats.clear();buildFilters();renderCentres();announce($('#cCount').textContent)}
+  else if(b.dataset.book){S.booked.add(b.dataset.book);renderCentres();announce(t('booked'))}
+  else if(b.dataset.fav){const k=b.dataset.fav;S.favs.has(k)?S.favs.delete(k):S.favs.add(k);b.setAttribute('aria-pressed',S.favs.has(k));b.setAttribute('aria-label',S.favs.has(k)?t('unfav'):t('fav'))}
+  else if(b.dataset.cat){S.cat=b.dataset.cat;renderEvents();$(`[data-cat="${S.cat}"]`).focus()}
+  else if(b.dataset.reg){const k=b.dataset.reg;S.reg.has(k)?S.reg.delete(k):S.reg.add(k);renderEvents();const nb=$(`[data-reg="${CSS.escape(k)}"]`);nb&&nb.focus();if(S.reg.has(k))announce(t('registered'))}
+  else if(b.dataset.comp){const k=b.dataset.comp;S.comp.has(k)?S.comp.delete(k):S.comp.add(k);renderEvents();const nb=$(`[data-comp="${CSS.escape(k)}"]`);nb&&nb.focus()}
+  else if(b.dataset.tab){const body=b.closest('.tut-body');body.querySelectorAll('[role=tab]').forEach(x=>x.setAttribute('aria-selected',String(x===b)));body.querySelectorAll('[role=tabpanel]').forEach(p=>p.hidden=p.id!=='p'+b.dataset.tab)}
+  else if(b.dataset.speak){const i=+b.dataset.speak;const msg=$(`[data-vmsg="${i}"]`);
+    try{if(!('speechSynthesis' in window))throw 0;speechSynthesis.cancel();const g=TUTS[i];const txt=[S.lang==='ar'?g.ar:g.en,...(S.lang==='ar'?g.ar_s:g.en_s)].join('. ');const u=new SpeechSynthesisUtterance(txt);u.lang=S.lang==='ar'?'ar-AE':'en-GB';u.rate=.9;speechSynthesis.speak(u)}catch(err){msg.textContent=t('noVoice')}}
+  else if(b.hasAttribute('data-stop')){try{speechSynthesis.cancel()}catch(err){}}
+  else if(b.id==='langBtn'){S.lang=S.lang==='ar'?'en':'ar';persist();applyLang();announce(S.lang==='ar'?'العربية':'English')}
+  else if(b.id==='a11yBtn'||b.id==='emBtn'){const pop=$(b.id==='a11yBtn'?'#a11yPop':'#emPop'),other=$(b.id==='a11yBtn'?'#emPop':'#a11yPop');other.hidden=true;document.querySelectorAll('#a11yBtn,#emBtn').forEach(x=>x!==b&&x.setAttribute('aria-expanded','false'));pop.hidden=!pop.hidden;b.setAttribute('aria-expanded',String(!pop.hidden));if(!pop.hidden)(pop.querySelector('button')||pop).focus()}
+  else if(b.id==='menuBtn'){const n=$('#nav');n.classList.toggle('open');b.setAttribute('aria-expanded',String(n.classList.contains('open')))}
+  else if(b.dataset.fs){S.fs=+b.dataset.fs;applyPrefs();persist()}
+  else if(b.classList.contains('switch')){const k=b.dataset.opt;S[k]=!S[k];applyPrefs();persist()}
+  else if(b.id==='resetA11y'){S.fs=0;S.hc=S.readable=S.simple=S.rm=false;applyPrefs();persist()}
+  else if(b.closest('nav.main')){$('#nav').classList.remove('open');$('#menuBtn').setAttribute('aria-expanded','false')}
+});
+document.addEventListener('change',e=>{
+  if(e.target.id==='emirate'){S.emirate=e.target.value;renderCentres();announce($('#cCount').textContent)}
+  else if(e.target.closest('#featChecks')){const k=e.target.value;e.target.checked?S.feats.add(k):S.feats.delete(k);renderCentres();announce($('#cCount').textContent)}
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){['#a11yPop','#emPop'].forEach(s=>{const p=$(s);if(!p.hidden){p.hidden=true;const btn=$(s==='#a11yPop'?'#a11yBtn':'#emBtn');btn.setAttribute('aria-expanded','false');btn.focus()}})}});
+
+applyPrefs(); applyLang();
+})();
+</script>
+
+</body></html>
